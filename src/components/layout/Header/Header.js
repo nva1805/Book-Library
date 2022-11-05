@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 const Header = () => {
     return (
@@ -12,24 +12,24 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Link to='/mybooks' className='nav-link'>My Books</Link>
+                        <NavLink to='/mybooks' className='nav-link'>My Books</NavLink>
                     </Nav>
                     <Nav className="me-auto">
-                        <Link to="/" className='nav-link'>Home</Link>
-                        <Link to="/novels" className='nav-link'>Novel</Link>
-                        <Link to="/sciences" className='nav-link'>Science</Link>
+                        <NavLink to="/" className='nav-link'>Home</NavLink>
+                        <NavLink to="/novels" className='nav-link'>Novel</NavLink>
+                        <NavLink to="/sciences" className='nav-link'>Science</NavLink>
                     </Nav>
 
                     <Nav>
                         <NavDropdown title="Người Dùng" id="basic-nav-dropdown">
-                            <Link to='/logins' className='dropdown-item'>Đăng Nhập</Link>
-                            <Link to='/logout' className='dropdown-item'>Đăng Xuất</Link>
-                            <Link to='/profile' className='dropdown-item'>Profile</Link>
+                            <NavLink to='/logins' className='dropdown-item'>Đăng Nhập</NavLink>
+                            <NavLink to='/logout' className='dropdown-item'>Đăng Xuất</NavLink>
+                            <NavLink to='/profile' className='dropdown-item'>Profile</NavLink>
 
-                            <Link to='/users' className='dropdown-divider'>
-                                <div className=' dropdown-item'>User</div>
-                            </Link>
-                            <Link to='/admins' className='dropdown-divider'>Admin</Link>
+                            <div className='dropdown-divider'></div>
+                            <Link to='/users' className='dropdown-item'>User</Link>
+                            <div className='dropdown-divider'></div>
+                            <Link to='/admins' className='dropdown-item'>Admin</Link>
                             
                             {/* <NavDropdown.Item href="#action/3.1">Đăng Nhập</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Đăng Xuất</NavDropdown.Item>
