@@ -11,6 +11,7 @@ import { Novel } from './components/Novel/Novel';
 import { MyBook } from './components/User/MyBook';
 import HomePage from './components/Home/HomePage';
 import Login from './components/Login/Login';
+import Register from './asset/video/Register/Register';
 
 
 
@@ -27,6 +28,7 @@ root.render(
         <Route path="mybooks" element={<MyBook />} />
       </Route>
       <Route path='logins' element={<Login/>}/>
+      <Route path="register" element={<Register />} />
     </Routes>
   </BrowserRouter>
   // </React.StrictMode>
