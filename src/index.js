@@ -9,6 +9,8 @@ import User from './components/User/User';
 import Admin from './components/Admin/Admin';
 import { Novel } from './components/Novel/Novel';
 import { MyBook } from './components/User/MyBook';
+import HomePage from './components/Home/HomePage';
+import Login from './components/Login/Login';
 
 
 
@@ -18,11 +20,13 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
+      <Route index element={<HomePage />} />
         <Route path="users" element={<User />} />
         <Route path="admins" element={<Admin />} />
         <Route path="novels" element={<Novel />} />
         <Route path="mybooks" element={<MyBook />} />
       </Route>
+      <Route path='logins' element={<Login/>}/>
     </Routes>
   </BrowserRouter>
   // </React.StrictMode>

@@ -26,15 +26,15 @@ const Header = () => {
                             <NavLink to='/logout' className='dropdown-item'>Đăng Xuất</NavLink>
                             <NavLink to='/profile' className='dropdown-item'>Profile</NavLink>
 
-                            <div className='dropdown-divider'></div>
+                            <div  role="separator" className='dropdown-divider'></div>
                             <Link to='/users' className='dropdown-item'>User</Link>
-                            <div className='dropdown-divider'></div>
-                            <Link to='/admins' className='dropdown-item'>Admin</Link>
+                            <div  role="separator" className='dropdown-divider'></div>
+                            <Link to='/admins' data-rr-ui-dropdown-item className='dropdown-item'>Admin</Link>
                             
                             {/* <NavDropdown.Item href="#action/3.1">Đăng Nhập</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Đăng Xuất</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Profile</NavDropdown.Item>
-                            <NavDropdown.Divider /><NavDropdown.Item href="/users">User</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">Profile</NavDropdown.Item> */}
+                            {/* <NavDropdown.Divider /><NavDropdown.Item href="/users">User</NavDropdown.Item>
                             <NavDropdown.Divider /><NavDropdown.Item href="/admins">Admin</NavDropdown.Item> */}
                         </NavDropdown>
                     </Nav>
