@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink, Link } from 'react-router-dom'
 
 const Header = () => {
@@ -24,7 +24,7 @@ const Header = () => {
                     {/* <button className='btn btn-light margin-right-15'>Register</button> */}
                     <button className='btn btn-dark'>Log in</button>
 
-                    {/* <Nav>
+                    <Nav>
                         <NavDropdown title="Người Dùng" id="basic-nav-dropdown">
                             <NavLink to='/logins' className='dropdown-item'>Đăng Nhập</NavLink>
                             <NavLink to='/logout' className='dropdown-item'>Đăng Xuất</NavLink>
@@ -35,7 +35,7 @@ const Header = () => {
                             <div role="separator" className='dropdown-divider'></div>
                             <Link to='/admins' data-rr-ui-dropdown-item className='dropdown-item'>Admin</Link>
                         </NavDropdown>
-                    </Nav> */}
+                    </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

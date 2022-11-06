@@ -21,13 +21,14 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-      <Route index element={<HomePage />} />
+        <Route index element={<HomePage />} />
         <Route path="users" element={<User />} />
-        <Route path="admins" element={<Admin />} />
         <Route path="novels" element={<Novel />} />
         <Route path="mybooks" element={<MyBook />} />
       </Route>
-      <Route path='logins' element={<Login/>}/>
+
+      <Route path="admins" element={<Admin />} />
+      <Route path='logins' element={<Login />} />
       <Route path="register" element={<Register />} />
     </Routes>
   </BrowserRouter>
