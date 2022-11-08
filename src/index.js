@@ -12,6 +12,8 @@ import { MyBook } from './components/User/MyBook';
 import HomePage from './components/Home/HomePage';
 import Login from './components/Login/Login';
 import Register from './asset/video/Register/Register';
+import ManageUser from './components/Admin/Content/manageUser/ManageUser';
+import Dashboard from './components/Admin/Content/Dashboard';
 
 
 
@@ -27,7 +29,11 @@ root.render(
         <Route path="mybooks" element={<MyBook />} />
       </Route>
 
-      <Route path="admins" element={<Admin />} />
+      <Route path="admins" element={<Admin />}>
+        <Route index element={<Dashboard />} />
+        <Route path="manageUser" element={<ManageUser />} />
+      </Route>
+
       <Route path='logins' element={<Login />} />
       <Route path="register" element={<Register />} />
     </Routes>

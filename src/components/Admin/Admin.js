@@ -2,6 +2,7 @@ import React from 'react'
 import SideBar from './SideBar'
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import '../../asset/css/components/admin/admin.scss'
+import { Outlet } from 'react-router-dom';
 
 export default function Admin() {
   return (
@@ -9,7 +10,7 @@ export default function Admin() {
 
       <div className='admin-title'>
         <div>
-          <h4 className='text-center display-4 bg-dark text-light'>Welcome to Administration</h4>
+          <h4 className='text-center display-4 bg-dark text-light pe-none pb-1'>Welcome to Administration</h4>
         </div>
       </div>
 
@@ -20,7 +21,7 @@ export default function Admin() {
           </ProSidebarProvider>
         </div>
         <div className='admin-content'>
-          asadda
+          <Outlet/>
         </div>
       </div>
     </div>
