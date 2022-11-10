@@ -1,6 +1,6 @@
 import React from 'react';
 import ModalCreateUser from './ModalCreateUser';
-
+import '../../../../asset/css/components/admin/content/ManageUser.scss'
 
 const ManageUser = () => {
   return (
