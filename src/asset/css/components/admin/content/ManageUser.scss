@@ -10,6 +10,9 @@
             padding-bottom: 4px;
             margin-left: 0.5rem;
             color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             &:hover {
                 opacity: 0.8;
             }
@@ -20,7 +23,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #ccc;
+            color: #888;
+            text-align: center;
 
             img {
                 max-height: 100%;

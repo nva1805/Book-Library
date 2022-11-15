@@ -2,28 +2,88 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
+import axios from 'axios';
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { storage } from '../../../../configs/firebase';
+
+
+
 
 function ModalCreateUser() {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+    setEmail('');
+    setPassword('');
+    setUserName('');
+    setRole('USER');
+    setImageFile('');
+    setPreviewImage('')
+    setImgUrl('')
+  };
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [userName, setUserName] = useState('')
   const [role, setRole] = useState('USER')
-  const [image, setImage] = useState('')
+  const [imageFile, setImageFile] = useState('')
   const [previewImage, setPreviewImage] = useState('')
+  const [imgUrl, setImgUrl] = useState(null);
 
-  const handleUploadImage = (event) => {
+
+
+  const handlePreviewImage = (event) => {
     if (event.target && event.target.files && event.target.files[0]) {
       setPreviewImage(URL.createObjectURL(event.target.files[0]))
-      setImage(event.target.files[0])
+      setImageFile(event.target.files[0])
     } else {
       // setPreviewImage(null) // neu ko co anh thi hien thi dong chu ''
     }
+
   }
+
+  const handleSubmitCreateUser = async () => {
+    if (!imageFile && !email && !password && !userName) {
+      alert("Please fill data first!")
+    }
+    //upload img and get link
+    ; (function uploadToImgFirebase() {
+      const storageRef = ref(storage, `/Participants/${imageFile.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, imageFile);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          // set percent if you need here!
+        },
+        (err) => console.log(err),
+        () => {
+          // download url; get link
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            setImgUrl(url)
+          });
+        }
+      );
+    })();
+    
+    
+    // call api
+    let data = {
+      email: email,
+      password: password,
+      userName: userName,
+      role: role,
+      userImageURL: `${imgUrl}`
+    }
+
+    await axios.create({
+      baseURL: 'https://backend-booklibrary-default-rtdb.firebaseio.com/Participants'
+    }).post('users.json', data).then(response => { console.log(response) }).catch(err => { console.log(err) })
+  }
+
+
   return (
     <>
       <Button variant="primary" onClick={handleShow} >
@@ -49,7 +109,7 @@ function ModalCreateUser() {
                   type="email"
                   className="form-control"
                   placeholder="Email"
-                  value={email} required
+                  value={email}
                   onChange={(event) => setEmail(event.target.value)} />
               </div>
               <div className="form-group col-md-6">
@@ -70,7 +130,7 @@ function ModalCreateUser() {
                   type="text"
                   className="form-control"
                   placeholder='User Name'
-                  value={userName} required
+                  value={userName}
                   onChange={(event) => setUserName(event.target.value)} />
               </div>
               <div className="form-group col-md-4">
@@ -84,19 +144,19 @@ function ModalCreateUser() {
 
             <div className="img-upload">
               <div className="row col-5">
-                <label className='col col-8 text-capitalize mb-2' htmlFor='inputImg'> <AiOutlinePlusCircle /> up load file image</label>
+                <label className='col col-8 text-capitalize mb-2' htmlFor='inputImg'> <AiOutlinePlusCircle />Choose image file</label>
                 <input
                   type="file"
                   id='inputImg'
                   name="" hidden
                   // value={image}
-                  onChange={(event) => handleUploadImage(event)} />
+                  onChange={(event) => handlePreviewImage(event)} />
               </div>
               <div className="col col-12 img-preview">
                 {previewImage ?
                   <img src={(previewImage)} alt="" />
                   :
-                  <span>Preview your image</span>
+                  <span>Preview your picture <br /> If you want to change your picture, click Choose image file again!</span>
                 }
               </div>
             </div>
@@ -106,7 +166,7 @@ function ModalCreateUser() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
             Save
           </Button>
         </Modal.Footer>
