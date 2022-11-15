@@ -5,6 +5,7 @@ import { AiOutlinePlusCircle } from 'react-icons/ai';
 import axios from 'axios';
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { storage } from '../../../../configs/firebase';
+import {  toast } from 'react-toastify';
 
 
 
@@ -44,10 +45,28 @@ function ModalCreateUser() {
 
   }
 
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+
   const handleSubmitCreateUser = async () => {
-    if (!imageFile && !email && !password && !userName) {
-      alert("Please fill data first!")
+    // validate
+    const isValidEmail = validateEmail(email)
+    if (!isValidEmail) {
+      toast.error('Invalid email!')
+      return;
     }
+    if (!password) {
+      toast.error('Please enter password!')
+      return;
+    }
+
+
     //upload img and get link
     ; (function uploadToImgFirebase() {
       const storageRef = ref(storage, `/Participants/${imageFile.name}`);
@@ -67,8 +86,8 @@ function ModalCreateUser() {
         }
       );
     })();
-    
-    
+
+
     // call api
     let data = {
       email: email,

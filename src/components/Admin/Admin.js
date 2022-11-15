@@ -3,6 +3,8 @@ import SideBar from './SideBar'
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import '../../asset/css/components/admin/admin.scss'
 import { Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Admin() {
   return (
@@ -21,9 +23,21 @@ export default function Admin() {
           </ProSidebarProvider>
         </div>
         <div className='admin-content'>
-          <Outlet/>
+          <Outlet />
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   )
 }
