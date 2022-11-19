@@ -22,7 +22,7 @@ export default function Admin() {
             <SideBar />
           </ProSidebarProvider>
         </div>
-        <div className='admin-content'>
+        <div className='admin-content w-100'>
           <Outlet />
         </div>
       </div>

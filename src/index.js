@@ -12,7 +12,7 @@ import { MyBook } from './components/User/MyBook';
 import HomePage from './components/Home/HomePage';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
-import ManageUser from './components/Admin/Content/manageUser/ManageUser';
+import ManageUser from './components/Admin/Content/manage/manageUser/ManageUser';
 import Dashboard from './components/Admin/Content/Dashboard';
 
 
