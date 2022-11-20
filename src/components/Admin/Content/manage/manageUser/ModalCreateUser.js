@@ -10,7 +10,7 @@ import { postCreateNewUser } from '../../../../../services/apiService';
 
 
 
-function ModalCreateUser() {
+function ModalCreateUser(props) {
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
@@ -87,8 +87,7 @@ function ModalCreateUser() {
           // download url; get link
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
             setImgUrl(url)
-            console.log(url)
-            console.log(imgUrl);
+            // console.log(url)
           });
         }
       );
@@ -98,7 +97,7 @@ function ModalCreateUser() {
   // call api
   await postCreateNewUser(email, password, userName, role, imgUrl)
     .then(response => {
-      console.log(response);
+      // console.log(response);
       if (response.data === 200) {
         setResponseUpload(true)
       }
@@ -109,7 +108,8 @@ function ModalCreateUser() {
   // close modal if success
   if (!responseUpload) {
     toast.info('Add new user successful')
-    // handleClose()
+    handleClose()
+    await props.fetchListUser()
   } else {
     toast.error('Fail to add new user')
   }
