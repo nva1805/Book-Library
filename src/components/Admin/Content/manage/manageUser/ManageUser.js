@@ -40,7 +40,10 @@ const ManageUser = (props) => {
         <ModalCreateUser fetchListUser={fetchListUser} /> 
       </div>
       <div className="">
-        <TableUser  listUser={listUser} />
+        <TableUser 
+        listUser={listUser}
+        fetchListUser={fetchListUser}
+        />
       </div>
     </div>
   )

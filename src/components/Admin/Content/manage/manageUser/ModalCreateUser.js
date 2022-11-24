@@ -31,7 +31,7 @@ function ModalCreateUser(props) {
   const [role, setRole] = useState('USER')
   const [imageFile, setImageFile] = useState('')
   const [previewImage, setPreviewImage] = useState('')
-  const [imgUrl, setImgUrl] = useState(null);
+  const [imgUrl, setImgUrl] = useState('');
   const [responseUpload, setResponseUpload] = useState(false);
 
 
@@ -92,7 +92,6 @@ function ModalCreateUser(props) {
         }
       );
     })();
-
 
   // call api
   await postCreateNewUser(email, password, userName, role, imgUrl)

@@ -1,8 +1,9 @@
 import React from 'react'
+import ModalUpdateUser from './ModalUpdateUser'
 
 
 const TableUser = (props) => {
-    const { listUser } = props
+    const { listUser, fetchListUser } = props
     return (
         <>
             <table className="table table-hover table-bordered">
@@ -27,11 +28,15 @@ const TableUser = (props) => {
                                 <td>{item.role}</td>
                                 <td className='text-center'>
                                     <button className='btn btn-secondary'>View</button>
-                                    <button className='btn btn-warning mx-3'>Update</button>
+                                    <ModalUpdateUser 
+                                        userInfo = {item}
+                                        fetchListUser={fetchListUser}
+                                    />
                                     <button className='btn btn-danger'>Delete</button>
                                 </td>
                             </tr>
-                        ))}
+                        ))
+                        }
                     {listUser && listUser.length === 0 &&
                         <tr>
                             <td colSpan={4} className='text-center text-danger' >Not found data!</td>
