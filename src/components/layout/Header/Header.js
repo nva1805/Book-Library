@@ -21,8 +21,9 @@ const Header = () => {
                     </Nav>
 
                     <Link to='register' className='btn btn-light margin-right-15'>Register</Link>
+                    <Link to='/logins' className='btn btn-dark margin-right-15'>Log in</Link>
                     {/* <button className='btn btn-light margin-right-15'>Register</button> */}
-                    <button className='btn btn-dark'>Log in</button>
+                    {/* <button className='btn btn-dark'>Log in</button> */}
 
                     <Nav>
                         <NavDropdown title="Người Dùng" id="basic-nav-dropdown">

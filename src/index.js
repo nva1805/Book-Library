@@ -10,8 +10,8 @@ import Admin from './components/Admin/Admin';
 import { Novel } from './components/Novel/Novel';
 import { MyBook } from './components/User/MyBook';
 import HomePage from './components/Home/HomePage';
-import Login from './components/Login/Login';
-import Register from './components/Register/Register';
+import Login from './components/Auth/Login/Login';
+import Register from './components/Auth/Register/Register';
 import ManageUser from './components/Admin/Content/manage/manageUser/ManageUser';
 import Dashboard from './components/Admin/Content/Dashboard';
 
