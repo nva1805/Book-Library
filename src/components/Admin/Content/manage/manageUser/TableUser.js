@@ -1,4 +1,5 @@
 import React from 'react'
+import ModalDeleteUser from './ModalDeleteUser'
 import ModalUpdateUser from './ModalUpdateUser'
 
 
@@ -9,12 +10,13 @@ const TableUser = (props) => {
             <table className="table table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
+                        <th scope="col" className='col-md-1'>No</th>
                         <th scope="col" className='col-md-2'>ID</th>
                         <th scope="col">User Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Role</th>
-                        <th scope="col" className='col-md-3'>Action</th>
+                        <th scope="col" className='col-md-1'>Image Url</th>
+                        <th scope="col" className='col-md-2 text-center'>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,13 +28,17 @@ const TableUser = (props) => {
                                 <td>{item.userName}</td>
                                 <td>{item.email}</td>
                                 <td>{item.role}</td>
+                                <td>{item && item.userImageURL ? 'Have' : 'Don\'t have'}</td>
                                 <td className='text-center'>
-                                    <button className='btn btn-secondary'>View</button>
+                                    {/* <button className='btn btn-'>View</button> */}
                                     <ModalUpdateUser 
                                         userInfo = {item}
                                         fetchListUser={fetchListUser}
                                     />
-                                    <button className='btn btn-danger'>Delete</button>
+                                    <ModalDeleteUser
+                                        userInfo = {item}
+                                        fetchListUser={fetchListUser}
+                                    />
                                 </td>
                             </tr>
                         ))

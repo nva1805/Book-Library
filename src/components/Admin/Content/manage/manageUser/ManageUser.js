@@ -42,7 +42,7 @@ const ManageUser = (props) => {
       <div className="">
         <TableUser 
         listUser={listUser}
-        fetchListUser={fetchListUser}
+        fetchListUser={fetchListUser} // cha cho con user table backend api
         />
       </div>
     </div>

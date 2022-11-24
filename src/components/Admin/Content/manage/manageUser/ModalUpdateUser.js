@@ -11,7 +11,7 @@ import { patchUpdateUser } from '../../../../../services/apiService';
 
 function ModalUpdateUser(props) {
     const { userInfo } = props
-    console.log(userInfo);
+    // console.log(userInfo);
     const [show, setShow] = useState(false);
 
     const handleShow = () => setShow(true);
@@ -102,7 +102,7 @@ function ModalUpdateUser(props) {
 
     return (
         <>
-            <Button variant="warning" className='mx-3' onClick={handleShow} >
+            <Button variant="secondary" className='mx-3' onClick={handleShow} >
                 Update
             </Button>
 

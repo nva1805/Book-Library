@@ -27,6 +27,9 @@ export const patchUpdateUser = (userName, role, imgUrl, userID) => {
   return axios.patch(`users/${userID}.json`, data)
 }
 
+export const deleteUser = (userID) => {
+  return axios.delete(`users/${userID}.json`)
+}
 
 
 
