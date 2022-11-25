@@ -5,6 +5,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink, Link } from 'react-router-dom'
 
 const Header = () => {
+    // const handleCheckRole = () => {
+
+    // }
     return (
         <Navbar bg="light" expand="lg">
             <Container >
@@ -27,13 +30,14 @@ const Header = () => {
 
                     <Nav>
                         <NavDropdown title="Người Dùng" id="basic-nav-dropdown">
-                            <NavLink to='/logins' className='dropdown-item'>Đăng Nhập</NavLink>
+                            {/* <NavLink to='/logins' className='dropdown-item'>Đăng Nhập</NavLink> */}
                             <NavLink to='/logout' className='dropdown-item'>Đăng Xuất</NavLink>
                             <NavLink to='/profile' className='dropdown-item'>Profile</NavLink>
 
                             <div role="separator" className='dropdown-divider'></div>
-                            <Link to='/users' className='dropdown-item'>User</Link>
-                            <div role="separator" className='dropdown-divider'></div>
+                            {/* <Link to='/users' className='dropdown-item'>User</Link> */}
+                            {/* <div role="separator" className='dropdown-divider'></div> */}
+                            {/* <NavDropdown.Item onClick={handleCheckRole}>Admin</NavDropdown.Item> */}
                             <Link to='/admins' data-rr-ui-dropdown-item className='dropdown-item'>Admin</Link>
                         </NavDropdown>
                     </Nav>

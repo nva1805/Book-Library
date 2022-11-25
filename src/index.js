@@ -9,11 +9,14 @@ import User from './components/User/User';
 import Admin from './components/Admin/Admin';
 import { Novel } from './components/Novel/Novel';
 import { MyBook } from './components/User/MyBook';
+import { ToastContainer } from 'react-toastify';
 import HomePage from './components/Home/HomePage';
 import Login from './components/Auth/Login/Login';
 import Register from './components/Auth/Register/Register';
 import ManageUser from './components/Admin/Content/manage/manageUser/ManageUser';
 import Dashboard from './components/Admin/Content/Dashboard';
+import LogOut from './components/Auth/Logout/LogOut';
+import { VerifyEmail } from './components/Auth/VerifyEmail/VerifyEmail';
 
 
 
@@ -36,8 +39,24 @@ root.render(
 
       <Route path='logins' element={<Login />} />
       <Route path="register" element={<Register />} />
+      <Route path="logout" element={<LogOut />} />
+      <Route path="verify" element={<VerifyEmail/>} />
     </Routes>
+
+    <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+    />
   </BrowserRouter>
+
   // </React.StrictMode>
 );
 
