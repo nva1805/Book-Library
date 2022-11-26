@@ -1,0 +1,15 @@
+.have__account {
+    margin: 0;
+    padding: 0;
+    right: 10%;
+    top: 8%;
+    font-size: 1rem;
+    align-items: center;
+    gap: 1rem;
+    p {
+        line-height: 100%;
+        transform: translateY(40%);
+        font-style: italic;
+        text-shadow: 0 0 2rem rgb(202, 22, 22);
+    }
+}

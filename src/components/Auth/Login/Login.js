@@ -12,9 +12,12 @@ import {
   from 'mdb-react-ui-kit';
 import { useState } from 'react';
 import { auth } from '../../../configs/firebase';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+
 
 
 export default function Login() {
@@ -24,10 +27,13 @@ export default function Login() {
 
 
 
-
   const handleSubmitLogin = () => {
+    if (!password && !emailAddress) {
+      toast.error('Please fill all info')
+      return;
+    }
     if (!password) {
-      toast.error('Please enter your password')
+      toast.error('Please enter password')
       return;
     }
     signInWithEmailAndPassword(auth, emailAddress, password)
@@ -60,6 +66,41 @@ export default function Login() {
         }
       });
   }
+
+  const handleForgotPass = () => {
+    sendPasswordResetEmail(auth, emailAddress)
+      .then(() => {
+        // Password reset email sent!
+        toast.info(`We have sent you an account change verification code in your email. Please check ${emailAddress}`, {
+          position: "top-center",
+          autoClose: 15000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          })
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (error.code === 'auth/invalid-email') {
+          toast.error('Invalid email!, Please enter your email address again!')
+        }
+        else if (errorCode === 'auth/missing-email') {
+          toast.error('Enter your email address, you don\'t need to fill password!')
+        }
+        else if (error.code === 'auth/user-not-found') {
+          toast.error('User not found, Please check your email and enter again!')
+        }
+        else if (errorCode) {
+          console.log(errorCode);
+          toast.error(errorMessage)
+        }
+      });
+  }
+
   return (
     <MDBContainer fluid className='bg-light'>
 
@@ -70,7 +111,7 @@ export default function Login() {
             <MDBCardBody className='p-5 d-flex flex-column align-items-center mx-auto w-100'>
 
               <h2 className="fw-bold mb-2 text-uppercase text-white">Login</h2>
-              <p className="text-white-50 mb-5">Please enter your email and password!</p>
+              <p className="text-white-50 mb-5">Welcome, enter your email and password!</p>
 
               <MDBInput
                 wrapperClass='mb-4 mx-5 w-100'
@@ -94,7 +135,7 @@ export default function Login() {
                 onChange={(event) => setPassword(event.target.value)}
               />
 
-              <p className="small mb-3 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+              <p className="small mb-3 pb-lg-2"><a class="text-white-50" href="#!" onClick={handleForgotPass}>Forgot password?</a></p>
               <MDBBtn
                 outline
                 className='mx-2 px-5 bg-info'
@@ -118,9 +159,17 @@ export default function Login() {
               </div>
 
               <div>
-                <p className="mb-0">Don't have an account? <a href="#!" class="text-white-50 fw-bold">Sign Up</a></p>
-
+                <p className="mb-0">
+                  Don't have an account?
+                  <Link to='/register' className='text-white-50 fw-bold'>Sign Up</Link>
+                </p>
               </div>
+              <div>
+                <p className="mb-0">
+                  <Link to='/' className='text-white-50 fw-bold'>Continue With guess?</Link>
+                </p>
+              </div>
+
             </MDBCardBody>
           </MDBCard>
 
@@ -130,3 +179,4 @@ export default function Login() {
     </MDBContainer>
   );
 }
+

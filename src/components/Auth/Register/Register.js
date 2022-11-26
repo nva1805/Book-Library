@@ -14,6 +14,7 @@ import { toast } from 'react-toastify';
 import { ref, set } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import '../../../asset/css/components/auth/register.scss'
 
 
 
@@ -43,6 +44,9 @@ export default function Register() {
     //     toast.error(error)
     //   });
   }
+
+
+
   const handelSubmitRegister = () => {
 
     if (password !== confirmPassword) {
@@ -62,7 +66,7 @@ export default function Register() {
               // Email verification sent!
               // ...
             })
-            navigate('/verify')
+          navigate('/verify')
         }
         console.log(user);
         // ...
@@ -86,64 +90,72 @@ export default function Register() {
         console.log(errorMessage);
         // ..
       });
+  }
 
-    
 
+  const handleHaveAccount = () => {
+    navigate('/logins')
   }
 
 
   return (
-    <MDBContainer fluid className='d-flex align-items-center justify-content-center bg-image' style={{ backgroundImage: 'url(https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp)' }}>
-      <div className='mask gradient-custom-3'></div>
-      <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
-        <MDBCardBody className='px-5'>
-          <h2 className="text-uppercase text-center mb-5">Create an account</h2>
-          <MDBInput
-            wrapperClass='mb-4'
-            label='Your User Name'
-            size='lg'
-            id='form1'
-            type='text'
-            value={userName}
-            onChange={(event) => setUserName(event.target.value)}
-          />
-          <MDBInput
-            wrapperClass='mb-4'
-            label='Your Email'
-            size='lg'
-            id='form2'
-            type='email'
-            value={emailAddress}
-            onChange={(event) => setEmailAddress(event.target.value)}
-          />
-          <MDBInput
-            wrapperClass='mb-4'
-            label='Password'
-            size='lg'
-            id='form3'
-            type='password'
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-          <MDBInput
-            wrapperClass='mb-4'
-            label='Repeat your password'
-            size='lg'
-            id='form4'
-            type='password'
-            value={confirmPassword}
-            onChange={(event) => setConfirmPassword(event.target.value)}
-          />
-          {/* <div className='d-flex flex-row justify-content-center mb-4'>
+    <div className='position-relative'>
+      <div className='d-flex position-absolute have__account'>
+        <p>Already have an account?</p>
+        <button className='btn btn-dark' onClick={handleHaveAccount}>Sign up</button>
+      </div>
+      <MDBContainer fluid className='d-flex align-items-center justify-content-center bg-image' style={{ backgroundImage: 'url(https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp)' }}>
+        <div className='mask gradient-custom-3'></div>
+        <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
+          <MDBCardBody className='px-5'>
+            <h2 className="text-uppercase text-center mb-5">Create an account</h2>
+            <MDBInput
+              wrapperClass='mb-4'
+              label='Your User Name'
+              size='lg'
+              id='form1'
+              type='text'
+              value={userName}
+              onChange={(event) => setUserName(event.target.value)}
+            />
+            <MDBInput
+              wrapperClass='mb-4'
+              label='Your Email'
+              size='lg'
+              id='form2'
+              type='email'
+              value={emailAddress}
+              onChange={(event) => setEmailAddress(event.target.value)}
+            />
+            <MDBInput
+              wrapperClass='mb-4'
+              label='Password'
+              size='lg'
+              id='form3'
+              type='password'
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <MDBInput
+              wrapperClass='mb-4'
+              label='Repeat your password'
+              size='lg'
+              id='form4'
+              type='password'
+              value={confirmPassword}
+              onChange={(event) => setConfirmPassword(event.target.value)}
+            />
+            {/* <div className='d-flex flex-row justify-content-center mb-4'>
             <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I agree all statements in Terms of service' />
           </div> */}
-          <MDBBtn
-            className='mb-4 w-100 gradient-custom-4'
-            size='lg'
-            onClick={handelSubmitRegister}
-          >Register</MDBBtn>
-        </MDBCardBody>
-      </MDBCard>
-    </MDBContainer>
+            <MDBBtn
+              className='mb-4 w-100 gradient-custom-4'
+              size='lg'
+              onClick={handelSubmitRegister}
+            >Register</MDBBtn>
+          </MDBCardBody>
+        </MDBCard>
+      </MDBContainer>
+    </div>
   );
 }

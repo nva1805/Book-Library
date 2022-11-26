@@ -13,9 +13,10 @@ const LogOut = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
             toast.info('Sign-out successful, see you again!')
-            navigate('/')
+            navigate('/logins')
         }).catch((error) => {
             // An error happened.
+            toast.error(error)
         });
     }
     return (
