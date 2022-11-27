@@ -16,7 +16,8 @@ import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/aut
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
+import { LoginAction } from '../../../redux/action/Action';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -24,6 +25,7 @@ export default function Login() {
   const [emailAddress, setEmailAddress] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
 
 
@@ -40,6 +42,12 @@ export default function Login() {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        console.log(userCredential);
+        // dispatch({
+        //   type: 'LOGIN_ACTION',
+        //   payload: userCredential
+        // })
+        dispatch(LoginAction(userCredential))
         toast.success(`Well com back! ${user.email}`)
         navigate('/')
         // ...
@@ -135,7 +143,7 @@ export default function Login() {
                 onChange={(event) => setPassword(event.target.value)}
               />
 
-              <p className="small mb-3 pb-lg-2"><a class="text-white-50" href="#!" onClick={handleForgotPass}>Forgot password?</a></p>
+              <p className="small mb-3 pb-lg-2"><a className="text-white-50" href="#!" onClick={handleForgotPass}>Forgot password?</a></p>
               <MDBBtn
                 outline
                 className='mx-2 px-5 bg-info'

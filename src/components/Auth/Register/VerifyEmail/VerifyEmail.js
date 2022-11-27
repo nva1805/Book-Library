@@ -1,6 +1,6 @@
 import React from 'react'
 // import VerifyImg from '../../../asset/picture/VerifyEmail.gif';
-import VerifyImg from '../../../asset/picture/giphy.gif';
+import VerifyImg from '../../../../asset/picture/giphy.gif';
 import { Link } from 'react-router-dom';
 
 

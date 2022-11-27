@@ -4,6 +4,7 @@ import { auth } from '../../../configs/firebase';
 import LogoutImg from '../../../asset/picture/Logout.jpg';
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import { persistor } from '../../../redux/store';
 
 
 
@@ -13,7 +14,13 @@ const LogOut = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
             toast.info('Sign-out successful, see you again!')
+            // clear localStorage
+            persistor.pause();
+            persistor.flush().then(() => {
+                return persistor.purge();
+            });
             navigate('/logins')
+            window.location.reload();
         }).catch((error) => {
             // An error happened.
             toast.error(error)

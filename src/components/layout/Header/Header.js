@@ -3,11 +3,17 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink, Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+
 
 const Header = () => {
     // const handleCheckRole = () => {
 
     // }
+    const checkUserAccount = useSelector((state) => state.userReducer.account)
+    const checkUserAuthenticated = useSelector((state) => state.userReducer.isAuthenticated)
+    console.log(checkUserAccount);
+    console.log(checkUserAuthenticated);
     return (
         <Navbar bg="light" expand="lg">
             <Container >
@@ -23,24 +29,29 @@ const Header = () => {
                         <NavLink to="/sciences" className='nav-link'>Science</NavLink>
                     </Nav>
 
-                    <Link to='register' className='btn btn-light margin-right-15'>Register</Link>
-                    <Link to='/logins' className='btn btn-dark margin-right-15'>Log in</Link>
-                    {/* <button className='btn btn-light margin-right-15'>Register</button> */}
-                    {/* <button className='btn btn-dark'>Log in</button> */}
 
-                    <Nav>
-                        <NavDropdown title="Người Dùng" id="basic-nav-dropdown">
-                            {/* <NavLink to='/logins' className='dropdown-item'>Đăng Nhập</NavLink> */}
-                            <NavLink to='/logout' className='dropdown-item'>Đăng Xuất</NavLink>
-                            <NavLink to='/profile' className='dropdown-item'>Profile</NavLink>
+                    {checkUserAuthenticated === false ?
+                        <>
+                            <Link to='register' className='btn btn-light margin-right-15'>Register</Link>
+                            <Link to='/logins' className='btn btn-dark margin-right-15'>Log in</Link>
+                            {/* <button className='btn btn-light margin-right-15'>Register</button> */}
+                            {/* <button className='btn btn-dark'>Log in</button> */}
+                        </>
+                        :
+                        <Nav>
+                            <NavDropdown title="Account Setting" id="basic-nav-dropdown" className='bg-light rounded'>
+                                {/* <NavLink to='/logins' className='dropdown-item'>Đăng Nhập</NavLink> */}
+                                <NavLink to='/profile' className='dropdown-item'>Profile</NavLink>
+                                <NavLink to='/logout' className='dropdown-item'>Log Out</NavLink>
 
-                            <div role="separator" className='dropdown-divider'></div>
-                            {/* <Link to='/users' className='dropdown-item'>User</Link> */}
-                            {/* <div role="separator" className='dropdown-divider'></div> */}
-                            {/* <NavDropdown.Item onClick={handleCheckRole}>Admin</NavDropdown.Item> */}
-                            <Link to='/admins' data-rr-ui-dropdown-item className='dropdown-item'>Admin</Link>
-                        </NavDropdown>
-                    </Nav>
+                                <div role="separator" className='dropdown-divider'></div>
+                                {/* <Link to='/users' className='dropdown-item'>User</Link> */}
+                                {/* <div role="separator" className='dropdown-divider'></div> */}
+                                {/* <NavDropdown.Item onClick={handleCheckRole}>Admin</NavDropdown.Item> */}
+                                <Link to='/admins' data-rr-ui-dropdown-item className='dropdown-item'>Admin</Link>
+                            </NavDropdown>
+                        </Nav>
+                    }
                 </Navbar.Collapse>
             </Container>
         </Navbar>
