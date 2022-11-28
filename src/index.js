@@ -20,6 +20,7 @@ import Dashboard from './components/Admin/Content/Dashboard';
 import LogOut from './components/Auth/Logout/LogOut';
 import { VerifyEmail } from './components/Auth/Register/VerifyEmail/VerifyEmail';
 import { PersistGate } from 'redux-persist/integration/react'
+import 'nprogress/nprogress.css'
 
 
 
@@ -67,6 +68,8 @@ root.render(
 
   // </React.StrictMode>
 );
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

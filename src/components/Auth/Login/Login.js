@@ -19,7 +19,8 @@ import { LoginAction, LoginActionGG } from '../../../redux/action/Action';
 import { useDispatch } from 'react-redux';
 import { FcGoogle } from 'react-icons/fc';
 import '../../../asset/css/components/auth/login.scss'
-
+import NProgress from 'nprogress'
+NProgress.configure({ showSpinner: false });
 
 
 export default function Login() {
@@ -39,6 +40,7 @@ export default function Login() {
       toast.error('Please enter password')
       return;
     }
+    NProgress.start();
     signInWithEmailAndPassword(auth, emailAddress, password)
       .then((userCredential) => {
         // Signed in 
@@ -48,6 +50,7 @@ export default function Login() {
         //   type: 'LOGIN_ACTION',
         //   payload: userCredential
         // })
+        NProgress.done();
         dispatch(LoginAction(userCredential))
         toast.success(`Welcome back! ${user.email}`)
         navigate('/')
@@ -175,11 +178,13 @@ export default function Login() {
               <p className="small mb-3 pb-lg-2"><a className="text-white-50" href="#!" onClick={handleForgotPass}>Forgot password?</a></p>
               <MDBBtn
                 outline
-                className='mx-2 px-5 bg-info'
+                className='mx-2 px-5 bg-info d-flex py-3 rounded login__email'
                 color='while'
                 size='lg'
                 onClick={handleSubmitLogin}
-              >Login</MDBBtn>
+              >
+                Login
+              </MDBBtn>
 
               <div
                 className='d-flex flex-row mt-4 mb-3 login__google'
