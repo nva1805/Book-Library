@@ -7,17 +7,18 @@ import {
   MDBCard,
   MDBCardBody,
   MDBInput,
-  MDBIcon
 }
   from 'mdb-react-ui-kit';
 import { useState } from 'react';
-import { auth } from '../../../configs/firebase';
-import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
+import { auth, provider } from '../../../configs/firebase';
+import { signInWithEmailAndPassword, sendPasswordResetEmail, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { LoginAction } from '../../../redux/action/Action';
+import { LoginAction, LoginActionGG } from '../../../redux/action/Action';
 import { useDispatch } from 'react-redux';
+import { FcGoogle } from 'react-icons/fc';
+import '../../../asset/css/components/auth/login.scss'
 
 
 
@@ -48,7 +49,7 @@ export default function Login() {
         //   payload: userCredential
         // })
         dispatch(LoginAction(userCredential))
-        toast.success(`Well com back! ${user.email}`)
+        toast.success(`Welcome back! ${user.email}`)
         navigate('/')
         // ...
       })
@@ -88,7 +89,7 @@ export default function Login() {
           draggable: true,
           progress: undefined,
           theme: "dark",
-          })
+        })
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -109,8 +110,36 @@ export default function Login() {
       });
   }
 
+  const handleLoginGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        console.log('token:', token, 'user', user);
+        dispatch(LoginActionGG(user))
+        toast.success(`Welcome! ${user.displayName}`)
+        navigate('/')
+      }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        if (errorCode) {
+          toast.error(errorMessage)
+          console.log('email:', email, 'credential ', credential);
+        }
+        // ...
+      });
+  }
+
   return (
-    <MDBContainer fluid className='bg-light'>
+    <MDBContainer fluid className='bg-light login__parent'>
 
       <MDBRow className='d-flex justify-content-center align-items-center h-100 '>
         <MDBCol col='12'>
@@ -118,8 +147,8 @@ export default function Login() {
           <MDBCard className='bg-secondary text-white my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '400px' }}>
             <MDBCardBody className='p-5 d-flex flex-column align-items-center mx-auto w-100'>
 
-              <h2 className="fw-bold mb-2 text-uppercase text-white">Login</h2>
-              <p className="text-white-50 mb-5">Welcome, enter your email and password!</p>
+              <h2 className="fw-bold mb-2 text-uppercase text-white">Login to book</h2>
+              <p className="text-white-50 mb-3">Welcome, enter your email and password!</p>
 
               <MDBInput
                 wrapperClass='mb-4 mx-5 w-100'
@@ -136,7 +165,7 @@ export default function Login() {
                 wrapperClass='mb-4 mx-5 w-100'
                 labelClass='text-white'
                 label='Password'
-                id='formControlLg'
+                id='formControlLgPass'
                 type='password'
                 size="lg"
                 value={password}
@@ -152,18 +181,11 @@ export default function Login() {
                 onClick={handleSubmitLogin}
               >Login</MDBBtn>
 
-              <div className='d-flex flex-row mt-3 mb-5'>
-                <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'white' }}>
-                  <MDBIcon fab icon='facebook-f' size="lg" />
-                </MDBBtn>
-
-                <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'white' }}>
-                  <MDBIcon fab icon='twitter' size="lg" />
-                </MDBBtn>
-
-                <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'white' }}>
-                  <MDBIcon fab icon='google' size="lg" />
-                </MDBBtn>
+              <div
+                className='d-flex flex-row mt-4 mb-3 login__google'
+                onClick={handleLoginGoogle}
+              >
+                <FcGoogle />Login with Google
               </div>
 
               <div>

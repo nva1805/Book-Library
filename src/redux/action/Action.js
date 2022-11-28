@@ -1,4 +1,4 @@
-import { LOGIN_ACTION, LOGOUT_ACTION } from "./types";
+import { LOGIN_ACTION, LOGIN_GG_ACTION } from "./types";
 
 
 export const LoginAction = (payload) => {
@@ -8,9 +8,9 @@ export const LoginAction = (payload) => {
     }
 }
 
-export const LogoutAction = (payload) => {
+export const LoginActionGG = (payload) => {
     return {
-        type: LOGOUT_ACTION,
+        type: LOGIN_GG_ACTION,
         payload: payload
     }
 }
