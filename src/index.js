@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import User from './components/User/User';
 import Admin from './components/Admin/Admin';
-import { Novel } from './components/Novel/Novel';
+import { Novel } from './components/product/Novel/Novel';
 import { MyBook } from './components/User/MyBook';
 import { ToastContainer } from 'react-toastify';
 import HomePage from './components/Home/HomePage';
@@ -21,6 +21,9 @@ import LogOut from './components/Auth/Logout/LogOut';
 import { VerifyEmail } from './components/Auth/Register/VerifyEmail/VerifyEmail';
 import { PersistGate } from 'redux-persist/integration/react'
 import 'nprogress/nprogress.css'
+import ReadBookByID from './components/product/Novel/ReadBookByID';
+import { NotFound } from './components/NotFound/NotFound';
+import { Science } from './components/product/Science/Science';
 
 
 
@@ -36,7 +39,9 @@ root.render(
             <Route index element={<HomePage />} />
             <Route path="users" element={<User />} />
             <Route path="novels" element={<Novel />} />
+            <Route path="sciences" element={<Science/>} />
             <Route path="mybooks" element={<MyBook />} />
+            <Route path="ReadBookByID/:id" element={<ReadBookByID/>} />
           </Route>
 
           <Route path="admins" element={<Admin />}>
@@ -48,6 +53,7 @@ root.render(
           <Route path="register" element={<Register />} />
           <Route path="logout" element={<LogOut />} />
           <Route path="verify" element={<VerifyEmail />} />
+          <Route path="*" element={<NotFound/>} />
         </Routes>
 
         <ToastContainer

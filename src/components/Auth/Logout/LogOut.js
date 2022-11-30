@@ -35,7 +35,7 @@ const LogOut = () => {
                     <img src={LogoutImg} alt="" />
                 </div>
                 <div>
-                    <button className='btn btn-secondary ms-5' onClick={handleSubmitLogout}>Books ncc djtmemay bố out</button>
+                    <button className='btn btn-secondary ms-5' onClick={handleSubmitLogout}>Log Out</button>
                 </div>
             </div>
             <button className='btn btn-warning d-block mx-auto my-5'>

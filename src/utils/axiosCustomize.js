@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-            baseURL: 'https://backend-booklibrary-default-rtdb.firebaseio.com/Participants/'
+            baseURL: 'https://backend-booklibrary-default-rtdb.firebaseio.com/'
         });
 
 // // Add a request interceptor

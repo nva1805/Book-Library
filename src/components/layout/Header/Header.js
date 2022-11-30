@@ -10,10 +10,10 @@ const Header = () => {
     // const handleCheckRole = () => {
 
     // }
-    const checkUserAccount = useSelector((state) => state.userReducer.account)
+    // const checkUserAccount = useSelector((state) => state.userReducer.account)
     const checkUserAuthenticated = useSelector((state) => state.userReducer.isAuthenticated)
-    console.log(checkUserAccount);
-    console.log(checkUserAuthenticated);
+    // console.log(checkUserAccount);
+    // console.log(checkUserAuthenticated);
     return (
         <Navbar bg="light" expand="lg">
             <Container >
