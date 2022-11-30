@@ -18,7 +18,6 @@ export const Novel = () => {
     NProgress.start()
     let res = await getNovel()
     console.log(res);
-    console.log(typeof res.data);
     const listNovelResult = [];
     for (let key in res.data) {
       listNovelResult.unshift(
