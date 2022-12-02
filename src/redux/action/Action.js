@@ -1,4 +1,4 @@
-import { LOGIN_ACTION, LOGIN_GG_ACTION } from "./types";
+import { LOGIN_ACTION, LOGIN_GG_ACTION, ADD_TO_MYBOOK_ACTION, REMOVE_FROM_MYBOOK_ACTION } from "./types";
 
 
 export const LoginAction = (payload) => {
@@ -11,6 +11,20 @@ export const LoginAction = (payload) => {
 export const LoginActionGG = (payload) => {
     return {
         type: LOGIN_GG_ACTION,
+        payload: payload
+    }
+}
+
+export const AddToMyBookAction = (payload) => {
+    return {
+        type: ADD_TO_MYBOOK_ACTION,
+        payload: payload
+    }
+}
+
+export const RemoveFromMyBookAction = (payload) => {
+    return {
+        type: REMOVE_FROM_MYBOOK_ACTION,
         payload: payload
     }
 }

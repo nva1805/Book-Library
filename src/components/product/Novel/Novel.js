@@ -4,13 +4,22 @@ import { useEffect, useState } from 'react';
 import '../../../asset/css/components/product/product.scss'
 import NProgress from 'nprogress'
 import { useNavigate } from 'react-router-dom'
+import { BsHeart } from 'react-icons/bs'
+import { useDispatch, useSelector } from 'react-redux';
+import { AddToMyBookAction } from '../../../redux/action/Action';
+import { ImSpinner3 } from 'react-icons/im';
+import { toast } from 'react-toastify';
 NProgress.configure({ showSpinner: false });
 
 
 
 export const Novel = () => {
+
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const checkUserAuthenticated = useSelector((state) => state.userReducer.isAuthenticated)
   const [listNovel, setListNovel] = useState([])
+
   useEffect(() => {
     fetchListNovel()
   }, []);
@@ -28,7 +37,19 @@ export const Novel = () => {
       )
     }
     setListNovel(listNovelResult)
+    console.log(listNovel);
     NProgress.done()
+    console.log(listNovelResult);
+  }
+
+  const handleAddToMB = (item) => {
+    if (checkUserAuthenticated) {
+      dispatch(AddToMyBookAction(item))
+      console.log("check props:" ,item);
+    }
+    else {
+      toast.info('You must be logged in to use this function!')
+    }
   }
 
   return (
@@ -55,17 +76,28 @@ export const Novel = () => {
             </div>
             <div className="col col-10 product">
               <div className="row ">
-                {listNovel && listNovel &&
+                {listNovel && listNovel.length > 0 &&
                   listNovel.map((item, index) => (
                     <div
                       key={index}
                       className="col col-md-3 product__item"
-                      onClick={() => navigate(`/ReadBookByID/${item.id}`)}
                     >
-                      <img className='w-100 product__image' src={item.productImageURL} alt="" />
-                      <p className='text-left mt-2 product__title'>{item.title}</p>
+                      <img onClick={() => navigate(`/ReadBookByID/${item.id}`)} className='w-100 product__image' src={item.productImageURL} alt="" />
+                      <p onClick={() => navigate(`/ReadBookByID/${item.id}`)} className='text-left mt-2 product__title'>{item.title}</p>
+                      <div
+                        title='Add to my book'
+                        className='product__myBook position-absolute'
+                        onClick={() => handleAddToMB(item)}
+                      >
+                        <BsHeart />
+                      </div>
                     </div>
                   ))
+                }
+                {listNovel && listNovel.length === 0 &&
+                <div className='product__loading'>
+                  <ImSpinner3 />
+                </div>
                 }
               </div>
             </div>
