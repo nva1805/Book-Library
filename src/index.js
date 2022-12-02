@@ -7,12 +7,11 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import User from './components/User/User';
 import Admin from './components/Admin/Admin';
 import { Novel } from './components/product/Novel/Novel';
-import { MyBook } from './components/User/MyBook';
 import { ToastContainer } from 'react-toastify';
 import HomePage from './components/Home/HomePage';
+import MyBook from './components/mybook/MyBook';
 import Login from './components/Auth/Login/Login';
 import Register from './components/Auth/Register/Register';
 import ManageUser from './components/Admin/Content/manage/manageUser/ManageUser';
@@ -24,6 +23,7 @@ import 'nprogress/nprogress.css'
 import ReadBookByID from './components/product/Novel/ReadBookByID';
 import { NotFound } from './components/NotFound/NotFound';
 import { Science } from './components/product/Science/Science';
+import Profile from './components/Auth/Profile/Profile';
 
 
 
@@ -37,7 +37,6 @@ root.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
-            <Route path="users" element={<User />} />
             <Route path="novels" element={<Novel />} />
             <Route path="sciences" element={<Science/>} />
             <Route path="mybooks" element={<MyBook />} />
@@ -52,6 +51,7 @@ root.render(
           <Route path='logins' element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="logout" element={<LogOut />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="verify" element={<VerifyEmail />} />
           <Route path="*" element={<NotFound/>} />
         </Routes>
