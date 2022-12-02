@@ -16,9 +16,7 @@
         }
 
         &.active {
-            padding-left: 1rem;
             color: red;
-
         }
     }
 }
@@ -27,8 +25,9 @@
     &__item {
         margin: 0 auto;
         margin-bottom: 5rem;
+        position: relative;
     }
-        
+
     &__image {
         max-width: 12rem !important;
         min-width: 12rem;
@@ -40,10 +39,50 @@
 
     &__title {
         max-width: 12rem !important;
+
         // margin-left: calc((100% - 12rem) / 2);
         &:hover {
             color: red;
             cursor: pointer;
+        }
+    }
+
+    &__myBook {
+        font-size: 2rem;
+        top: 0.5%;
+        left: 5%;
+        padding: 0.5rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        z-index: 5;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #000;
+        }
+    }
+    &.active {
+        color: red;
+    }
+    &__loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 35%;
+        font-size: 10rem;
+        color: red;
+        width: 12rem;
+        margin-top: 5rem;
+        animation: spin 1s infinite linear;
+    }
+
+    @keyframes spin {
+        from {
+            transform: scale(1) rotate(0deg);
+        }
+
+        to {
+            transform: scale(1) rotate(360deg);
         }
     }
 }
