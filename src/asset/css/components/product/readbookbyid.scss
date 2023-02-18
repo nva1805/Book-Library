@@ -1,0 +1,25 @@
+.container {
+    .read__tb {
+        &__info {
+            display: flex;
+            gap: 3rem;
+            justify-content: flex-start;
+            margin: 0 0 2rem 5rem;
+            img {
+                min-width: 200px;
+                max-width: 200px;
+                border: 1rem solid rgb(72, 62, 62);
+                border-radius: 5px;
+            }
+        }
+        span {
+            border-bottom: 2px solid red;
+            margin-bottom: 1rem;
+        }
+        p {
+            text-align: justify;
+            text-transform: capitalize;
+            text-indent: 50px;
+        }
+    }
+}
