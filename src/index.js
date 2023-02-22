@@ -24,6 +24,9 @@ import ReadBookByID from './components/product/Novel/ReadBookByID';
 import { NotFound } from './components/NotFound/NotFound';
 import { Science } from './components/product/Science/Science';
 import Profile from './components/Auth/Profile/Profile';
+import ChangePassword from './components/Auth/Profile/profileFeature/ChangePassword';
+import ChangeName from './components/Auth/Profile/profileFeature/ChangeName';
+import Intro from './components/Auth/Profile/profileFeature/Intro';
 
 
 
@@ -38,9 +41,9 @@ root.render(
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
             <Route path="novels" element={<Novel />} />
-            <Route path="sciences" element={<Science/>} />
+            <Route path="sciences" element={<Science />} />
             <Route path="mybooks" element={<MyBook />} />
-            <Route path="ReadBookByID/:id" element={<ReadBookByID/>} />
+            <Route path="ReadBookByID/:id" element={<ReadBookByID />} />
           </Route>
 
           <Route path="admins" element={<Admin />}>
@@ -48,12 +51,17 @@ root.render(
             <Route path="manageUser" element={<ManageUser />} />
           </Route>
 
+          <Route path="profile" element={<Profile />} >
+            <Route index element={<Intro />} />
+            <Route path="changePass" element={<ChangePassword />} />
+            <Route path="changeName" element={<ChangeName />} />
+          </Route>
+
           <Route path='logins' element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="logout" element={<LogOut />} />
-          <Route path="profile" element={<Profile />} />
           <Route path="verify" element={<VerifyEmail />} />
-          <Route path="*" element={<NotFound/>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         <ToastContainer
