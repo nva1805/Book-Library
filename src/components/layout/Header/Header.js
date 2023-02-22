@@ -15,7 +15,7 @@ const Header = () => {
     // console.log(checkUserAccount);
     // console.log(checkUserAuthenticated);
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" style={{textShadow: "2px 0px 0px white"}}>
             <Container >
                 <Navbar.Brand href="/">Book Library</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
