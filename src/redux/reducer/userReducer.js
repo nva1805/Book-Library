@@ -6,6 +6,7 @@ const INITIAL_STATE = {
         access_token: '',
         refresh_token: '',
         userName: '',
+        userImage: '',
         email: '',
         id: ''
     },
@@ -23,7 +24,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
                     access_token: action?.payload?.user?.accessToken,
                     refresh_token: action.payload?._tokenResponse?.refreshToken,
                     userName: action?.payload?.user?.displayName,
-                    email: action.payload?.user?.email
+                    email: action.payload?.user?.email,
+                    userImage: action?.payload?.user?.photoURL
                 },
                 isAuthenticated: true
             };
