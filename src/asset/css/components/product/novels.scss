@@ -1,0 +1,89 @@
+.nav__search {
+    input {
+        border-radius: 2rem;
+        padding: 1rem 2rem;
+        border: none;
+        margin-top: 0.625rem;
+        z-index: 2;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+
+.product {
+    &__item {
+        margin-bottom: 4rem;
+        position: relative;
+
+        &:hover {
+            color: red;
+            cursor: pointer;
+            transition: all 0.8s ease 0s;
+        }
+    }
+
+    &__image {
+        max-width: 13.5rem !important;
+        min-width: 13.5rem;
+        max-height: 17rem;
+        min-height: 17rem;
+        display: block;
+        border: 1px solid #555;
+        // margin: 0 auto;
+    }
+
+    &__title {
+        max-width: 13.5rem !important;
+        height: 3rem !important;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+
+    &__myBook {
+        font-size: 2rem;
+        top: 0;
+        left: 0;
+        padding: 0.5rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        z-index: 5;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #000;
+            transition: all 0.5s ease 0s;
+        }
+    }
+
+    &.active {
+        color: red;
+    }
+
+    &__loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 35%;
+        font-size: 10rem;
+        color: red;
+        width: 12rem;
+        margin-top: 5rem;
+        animation: spin 1s infinite linear;
+    }
+
+    @keyframes spin {
+        from {
+            transform: scale(1) rotate(0deg);
+        }
+
+        to {
+            transform: scale(1) rotate(360deg);
+        }
+    }
+}
