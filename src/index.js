@@ -27,6 +27,9 @@ import Profile from './components/Auth/Profile/Profile';
 import ChangePassword from './components/Auth/Profile/profileFeature/ChangePassword';
 import ChangeName from './components/Auth/Profile/profileFeature/ChangeName';
 import Intro from './components/Auth/Profile/profileFeature/Intro';
+import Product from './components/product/Product';
+import Blog from './components/blogs/Blog';
+import BlogDetail from './components/blogs/BlogDetail';
 
 
 
@@ -40,11 +43,18 @@ root.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
-            <Route path="novels" element={<Novel />} />
-            <Route path="sciences" element={<Science />} />
+            <Route path="books" element={<Product />}>
+              <Route path="novels" element={<Novel />} />
+              <Route path="sciences" element={<Science />} />
+            </Route>
             <Route path="mybooks" element={<MyBook />} />
             <Route path="ReadBookByID/:id" element={<ReadBookByID />} />
+            <Route path="blogs" element={<Blog />}/>
+            <Route path="blogDetail/:id" element={<BlogDetail />} />
+
           </Route>
+
+
 
           <Route path="admins" element={<Admin />}>
             <Route index element={<Dashboard />} />
