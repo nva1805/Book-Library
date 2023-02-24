@@ -11,7 +11,7 @@ const ChangeName = (props) => {
 
     const handleSubmitChange = () => {
         updateProfile(auth.currentUser, {
-            displayName: `${name}`, photoURL: "https://firebasestorage.googleapis.com/v0/b/backend-booklibrary.appspot.com/o/Participants%2Fhiringposter.jpg?alt=media&token=8b2b0372-7b6e-48e4-aa2c-d241841275e1"
+            displayName: `${name}`, 
         }).then(() => {
             toast.success("Change Name success, refresh to view")
         }).catch((error) => {
