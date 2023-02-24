@@ -1,88 +1,71 @@
-.nav__search {
-    input {
-        &:focus {
-            outline: none;
-        }
-    }
-}
-
-.category {
-
-    // &__nav--list {}
-    &__nav--item {
-        &:hover {
-            color: red;
-            cursor: pointer;
-        }
-
-        &.active {
-            color: red;
-        }
-    }
-}
-
 .product {
-    &__item {
-        margin: 0 auto;
-        margin-bottom: 5rem;
-        position: relative;
-    }
 
-    &__image {
-        max-width: 12rem !important;
-        min-width: 12rem;
-        max-height: 17rem;
-        min-height: 17rem;
-        display: block;
-        // margin: 0 auto;
-    }
+    &__left {
+        height: calc(100vh - 4rem);
+        position: sticky;
+        top: 3.125rem;
+        overflow: scroll;
+        background-color: #f2f3f2;
 
-    &__title {
-        max-width: 12rem !important;
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
-        // margin-left: calc((100% - 12rem) / 2);
-        &:hover {
-            color: red;
-            cursor: pointer;
+        border-right: 3px solid;
+        border-top: 3px solid #000;
+        height: calc(100vh - 2.8rem);
+
+        h3 {
+            user-select: none;
+        }
+
+        .product__feature {
+            display: flex;
+            flex-direction: column;
+
+            a {
+                display: block;
+                text-decoration: none;
+                color: #000;
+
+                &.active {
+                    color: red !important;
+                }
+
+                span {
+                    display: block;
+                    width: 100%;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    border-top: 1px solid;
+                    border-color: #0d6efd;
+                    padding: 1rem 0;
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: rgba(170, 170, 170, 0.5);
+                        transition: all 1s ease 0s;
+                    }
+                }
+
+                &:last-child {
+                    border-bottom: 1px solid #0d6efd;
+                }
+            }
         }
     }
 
-    &__myBook {
-        font-size: 2rem;
-        top: 0.5%;
-        left: 5%;
-        padding: 0.5rem;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        z-index: 5;
 
-        &:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-            color: #000;
-        }
-    }
-    &.active {
-        color: red;
-    }
-    &__loading {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 35%;
-        font-size: 10rem;
-        color: red;
-        width: 12rem;
-        margin-top: 5rem;
-        animation: spin 1s infinite linear;
-    }
+    &__show {
+        height: calc(100vh - 2.8rem);
+        position: sticky;
+        top: 3.125rem;
+        overflow: scroll;
 
-    @keyframes spin {
-        from {
-            transform: scale(1) rotate(0deg);
+        &::-webkit-scrollbar {
+            display: none;
         }
 
-        to {
-            transform: scale(1) rotate(360deg);
-        }
+        background-color: #cdae94;
     }
 }
