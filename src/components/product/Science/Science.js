@@ -1,7 +1,7 @@
 import React from 'react'
 import { getNovel } from '../../../services/apiService'
 import { useEffect, useState } from 'react';
-import '../../../asset/css/components/product/product.scss'
+import '../../../asset/css/components/product/novels.scss'
 import NProgress from 'nprogress'
 import { useNavigate } from 'react-router-dom'
 import { BsHeart, BsFillHeartFill } from 'react-icons/bs'
@@ -61,37 +61,29 @@ export const Science = () => {
     const title = item.title && item.title.toLowerCase(); // kiểm tra xem title có tồn tại không
     return title && title.includes(searchTerm.toLowerCase());
   });
+
+
   return (
-    <div  style={{backgroundColor:"#ebebeb"}}>
-      <div className='container mt-4'>
+    <div >
+      <div className='container'>
         <div className='row'>
           <div className='col col-12 nav__search'>
-            <input type="search" placeholder='Search...' className='d-block mx-auto w-50 py-2'
+            <input type="search" placeholder='Search...' className='d-block mx-auto w-50'
               onChange={(event) => setSearchTerm(event.target.value)}
             />
           </div>
         </div>
       </div>
       <div className='container-fluid'>
-        <div className='container my-5 category'>
+        <div className='container my-5'>
           <div className="row">
-            <div className="col col-2 category" onClick={() => toast.info('Coming soon')}>
-              <p className="category__nav--title text-uppercase">Sort by</p>
-              <ul className='text-capitalize category__nav--list'>
-                <li className='category__nav--item'>latest update</li>
-                <li className='category__nav--item'>Name</li>
-                <li className='category__nav--item'>top month</li>
-                <li className='category__nav--item'>top week</li>
-                <li className='category__nav--item'>top day</li>
-              </ul>
-            </div>
-            <div className="col col-10 product">
+            <div className="col col-12 product">
               <div className="row ">
                 {filteredList && filteredList.length > 0 &&
                   filteredList.map((item, index) => (
                     <div
                       key={index}
-                      className="col col-md-3 product__item"
+                      className="col col-md-3 p-0 product__item"
                     >
                       <img onClick={() => navigate(`/ReadBookByID/${item.id}`)} className='w-100 product__image' src={item.productImageURL} alt="" />
                       <p onClick={() => navigate(`/ReadBookByID/${item.id}`)} className='text-left mt-2 product__title'>{item.title}</p>
