@@ -43,12 +43,7 @@ const BlogDetail = () => {
             setComment('');
         }
     };
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            handleCommentSubmit()
-        }
-    }
+
 
     if (!blog) {
         return (<div className='container blogDetail__loading'>
@@ -81,7 +76,6 @@ const BlogDetail = () => {
                     <Comment
                         comments={blog.comments || {}}
                         onSubmit={handleCommentSubmit}
-                        handleKeyDown={handleKeyDown}
                         comment={comment}
                         onCommentChange={(event) => setComment(event.target.value)}
                     />
