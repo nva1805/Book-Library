@@ -5,6 +5,8 @@ import { auth, database } from '../../configs/firebase';
 import { useParams } from 'react-router-dom';
 import "../../asset/css/components/blog/BlogDetail.scss"
 import { ImSpinner3 } from 'react-icons/im';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 
 
@@ -13,6 +15,9 @@ const BlogDetail = () => {
     const [comment, setComment] = useState('');
     const { id } = useParams();
     const user = auth.currentUser
+
+    const authentication = useSelector(state => state.userReducer.isAuthenticated)
+
     useEffect(() => {
         const blogRef = ref(database, `Blogs/${id}`);
         onValue(blogRef, (snapshot) => {
@@ -22,18 +27,28 @@ const BlogDetail = () => {
     }, [id]);
 
     const handleCommentSubmit = (event) => {
-        event.preventDefault();
-        const commentRef = ref(database, `Blogs/${id}/comments`);
-        push(commentRef, {
-            content: comment,
-            createdAt: {
-                '.sv': 'timestamp'
-            },
-            userName: user.displayName,
-            userImageURL: user.photoURL
-        });
-        setComment('');
+        if (!authentication) {
+            toast.info("You must login to use this function!")
+        } else {
+            event.preventDefault();
+            const commentRef = ref(database, `Blogs/${id}/comments`);
+            push(commentRef, {
+                content: comment,
+                createdAt: {
+                    '.sv': 'timestamp'
+                },
+                userName: user.displayName,
+                userImageURL: user.photoURL
+            });
+            setComment('');
+        }
     };
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            handleCommentSubmit()
+        }
+    }
 
     if (!blog) {
         return (<div className='container blogDetail__loading'>
@@ -66,6 +81,7 @@ const BlogDetail = () => {
                     <Comment
                         comments={blog.comments || {}}
                         onSubmit={handleCommentSubmit}
+                        handleKeyDown={handleKeyDown}
                         comment={comment}
                         onCommentChange={(event) => setComment(event.target.value)}
                     />

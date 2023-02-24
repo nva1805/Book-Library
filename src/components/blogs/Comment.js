@@ -51,7 +51,7 @@ const Comment = (props) => {
                 />
             </div>
             <div className="d-flex justify-content-end my-5">
-                <button type="button" className="btn btn-primary" onClick={onSubmit}>
+                <button type="button" className="btn btn-primary" onClick={onSubmit}> 
                     Comment
                 </button>
             </div>
