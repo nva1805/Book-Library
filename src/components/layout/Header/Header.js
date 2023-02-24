@@ -4,18 +4,19 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import "../../../asset/css/components/header/Header.scss"
 
 
 const Header = () => {
+    const location = useLocation()
     // const handleCheckRole = () => {
 
     // }
     // const checkUserAccount = useSelector((state) => state.userReducer.account)
-    const checkUserAuthenticated = useSelector((state) => state.userReducer.isAuthenticated)
-    // console.log(checkUserAccount);
-    // console.log(checkUserAuthenticated);
+    const checkUserAuthenticated = useSelector((state) => state.userReducer.isAuthenticated);
     return (
-        <Navbar bg="light" expand="lg" style={{textShadow: "2px 0px 0px white"}}>
+        <Navbar bg="light" expand="lg" className={location.pathname === '/' ? '' : 'shadow'} style={{textShadow: "2px 0px 0px white"}}>
             <Container >
                 <Navbar.Brand href="/">Book Library</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
