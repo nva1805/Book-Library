@@ -5,6 +5,11 @@
             gap: 3rem;
             justify-content: flex-start;
             margin: 0 0 2rem 5rem;
+
+            h4 {
+                text-transform: capitalize;
+            }
+
             img {
                 min-width: 200px;
                 max-width: 200px;
@@ -12,10 +17,13 @@
                 border-radius: 5px;
             }
         }
+
         span {
             border-bottom: 2px solid red;
             margin-bottom: 1rem;
+            text-transform: capitalize;
         }
+
         p {
             text-align: justify;
             text-transform: capitalize;
