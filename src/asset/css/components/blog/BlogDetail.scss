@@ -1,0 +1,28 @@
+.img-detail {
+    img {
+        max-height: 26.563rem;
+        min-height: 26.563rem;
+        object-fit: cover;
+    }
+}
+
+.blogDetail__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10rem;
+    color: red;
+    width: 12rem;
+    margin-top: 5rem;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}

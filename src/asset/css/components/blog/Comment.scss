@@ -1,0 +1,16 @@
+.comment {
+    img {
+        width: 60px;
+        height: 60px;
+        margin-right: 1rem;
+        object-fit: cover;
+    }
+    textarea {
+        -webkit-transition: all 0.5s ease 0s;
+        -o-transition: all 0.5s ease 0s;
+        transition: all 0.5s ease 0s;
+        outline: 0;
+        background: none;
+        border: 0;
+    }
+}
