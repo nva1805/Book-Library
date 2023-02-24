@@ -50,7 +50,7 @@ const HomePage = (props) => {
                     It avoids the need to purchase costly books and assets. Let the book connect to your inner self.
                 </p>
                 <button className='btn btn-dark'
-                    onClick={() => navigate('novels')}
+                    onClick={() => navigate('/books/novels')}
                 >Read Now</button>
             </div>
         </div>
