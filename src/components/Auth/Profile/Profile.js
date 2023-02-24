@@ -4,10 +4,15 @@ import { getAllUser } from '../../../services/apiService';
 import DefaultAvt from '../../../asset/picture/defaultAvt/sbcf-default-avatar.png'
 import '../../../asset/css/components/auth/profile.scss'
 import { Outlet, useNavigate } from 'react-router-dom';
-import { storage, database } from '../../../configs/firebase'
+import { storage, database, auth } from '../../../configs/firebase'
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { ref as dbRef, update } from 'firebase/database';
 import nprogress from 'nprogress';
+import { toast } from 'react-toastify';
+import { updateProfile } from "firebase/auth";
+
+
+
 
 const Profile = () => {
     const navigate = useNavigate()
@@ -42,10 +47,22 @@ const Profile = () => {
         const storageRef = ref(storage, `/Participants/${e.target.files[0].name}`);
         await uploadBytes(storageRef, e.target.files[0]);
         const downloadUrl = await getDownloadURL(storageRef);
+
+
+        // update photo Url
+        updateProfile(auth.currentUser, {
+            photoURL: downloadUrl,
+        }).then(() => {
+            console.log('success');
+        }).catch((error) => {
+            toast.error(`Fail to update`)
+        });
+
+        // write to realtime database
         const dbUserRef = dbRef(database, 'Participants/users/' + user.id);
         update(dbUserRef, {
-            // userImageURL: 'https://firebasestorage.googleapis.com/v0/b/' + storageRef.bucket + '/o/' + encodeURIComponent(storageRef.fullPath) + '?alt=media',
-            userImageURL: downloadUrl
+            userImageURL: 'https://firebasestorage.googleapis.com/v0/b/' + storageRef.bucket + '/o/' + encodeURIComponent(storageRef.fullPath) + '?alt=media',
+            // userImageURL: downloadUrl
         }, { merge: true });
         nprogress.done()
         setPreviewImage(URL.createObjectURL(e.target.files[0]))
