@@ -20,7 +20,6 @@ import LogOut from './components/Auth/Logout/LogOut';
 import { VerifyEmail } from './components/Auth/Register/VerifyEmail/VerifyEmail';
 import { PersistGate } from 'redux-persist/integration/react'
 import 'nprogress/nprogress.css'
-import ReadBookByID from './components/product/Novel/ReadBookByID';
 import { NotFound } from './components/NotFound/NotFound';
 import { Science } from './components/product/Science/Science';
 import Profile from './components/Auth/Profile/Profile';
@@ -30,6 +29,8 @@ import Intro from './components/Auth/Profile/profileFeature/Intro';
 import Product from './components/product/Product';
 import Blog from './components/blogs/Blog';
 import BlogDetail from './components/blogs/BlogDetail';
+import ReadNovelByID from './components/product/Novel/ReadNovelByID';
+import ReadScienceById from './components/product/Science/ReadScienceById';
 
 
 
@@ -48,8 +49,9 @@ root.render(
               <Route path="sciences" element={<Science />} />
             </Route>
             <Route path="mybooks" element={<MyBook />} />
-            <Route path="ReadBookByID/:id" element={<ReadBookByID />} />
-            <Route path="blogs" element={<Blog />}/>
+            <Route path="ReadNovelByID/:id" element={<ReadNovelByID />} />
+            <Route path="ReadScienceById/:id" element={<ReadScienceById />} />
+            <Route path="blogs" element={<Blog />} />
             <Route path="blogDetail/:id" element={<BlogDetail />} />
 
           </Route>

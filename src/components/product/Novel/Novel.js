@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AddToMyBookAction } from '../../../redux/action/Action';
 import { ImSpinner3 } from 'react-icons/im';
 import { toast } from 'react-toastify';
-NProgress.configure({ showSpinner: false });
+NProgress.configure({ showSpinner: false});
 
 
 
@@ -53,7 +53,8 @@ export const Novel = () => {
       console.log(listMyBook.length);
     }
     else {
-      toast.info('You must be logged in to use this function!')
+      toast.warning('You must be logged in to use this function!', {
+        position: "top-center"})
     }
   }
 
@@ -84,8 +85,8 @@ export const Novel = () => {
                       key={index}
                       className="col col-md-3 p-0 product__item"
                     >
-                      <img onClick={() => navigate(`/ReadBookByID/${item.id}`)} className='w-100 product__image' src={item.productImageURL} alt="" />
-                      <p onClick={() => navigate(`/ReadBookByID/${item.id}`)} className='text-left mt-2 product__title'>{item.title}</p>
+                      <img onClick={() => navigate(`/ReadNovelByID/${item.id}`)} className='w-100 product__image' src={item.productImageURL} alt="" />
+                      <p onClick={() => navigate(`/ReadNovelByID/${item.id}`)} className='text-left mt-2 product__title'>{item.title}</p>
                       <div
                         title='Add to my book'
                         className='product__myBook position-absolute'

@@ -5,8 +5,9 @@ import { NavLink, Outlet } from 'react-router-dom';
 const Product = () => {
 
     return (
-        <div className='container'>
-            <div className="product">
+        <div style={{ backgroundColor: "#f3e3d6" }}>
+            <div className='container'>
+                <div className="product">
                     <div className="row">
                         <div className="col col-3 product__left">
                             <h3 className='mt-5'>Categories:</h3>
@@ -21,8 +22,10 @@ const Product = () => {
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
+
     )
 }
 

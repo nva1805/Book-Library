@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { getNovel } from '../../../services/apiService';
 import '../../../asset/css/components/product/readbookbyid.scss'
 
-const ReadBookByID = (props) => {
+const ReadNovelByID = (props) => {
     const param = useParams()
     console.log(param);
     const [listNovel, setListNovel] = useState([])
@@ -53,4 +53,4 @@ const ReadBookByID = (props) => {
         </div>
     )
 }
-export default ReadBookByID
+export default ReadNovelByID
