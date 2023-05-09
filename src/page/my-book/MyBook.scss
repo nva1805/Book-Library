@@ -1,0 +1,50 @@
+.myBook-container {
+    margin-top: 100px;
+
+    .myBook {
+        &__item {
+            display: flex;
+            // justify-content: space-between;
+            align-items: center;
+            background-color: #9a9a9e;
+
+
+            // height: 9rem !important;
+            &--image {
+                height: 9rem;
+                width: 7rem;
+                margin: 0 5rem 0 2rem;
+            }
+
+            &--title {
+                text-transform: capitalize;
+                cursor: default;
+            }
+
+            &--read {
+                margin-right: 10rem;
+            }
+
+            &--remove {
+                font-size: 1.5rem;
+                position: absolute;
+                right: 7rem;
+                padding: 0.1rem 0.7rem;
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    transform: scale(1.2);
+                    right: 6.8rem;
+                    cursor: pointer;
+                    font-size: 2rem;
+                    color: red;
+                }
+
+                &:not(:hover) {
+                    transform: none;
+                    transition: all 0.3s ease;
+                }
+            }
+        }
+    }
+}

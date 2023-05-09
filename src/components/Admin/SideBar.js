@@ -4,9 +4,7 @@ import { FaUsers, FaBook, FaSwatchbook } from "react-icons/fa"; //import icon fr
 import { FcManager } from "react-icons/fc";
 import { BsFillBarChartFill, BsFillCalendar2MonthFill } from "react-icons/bs";
 import { Link } from 'react-router-dom'
-
-
-import '../../asset/css/components/admin/sidebar.scss'
+import './sidebar.scss'
 
 
 const SideBar = () => {

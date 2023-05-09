@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 import { ref, set } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
-import '../../../asset/css/components/auth/register.scss'
+import './register.scss'
 
 
 
@@ -35,14 +35,6 @@ export default function Register() {
       role: 'USER',
       userImageURL: ''
     })
-    // .then(() => {
-    //   // Data saved successfully!
-    //   console.log('Add to Realtime DB successful');
-    // })
-    //   .catch((error) => {
-    //     // The write failed...
-    //     toast.error(error)
-    //   });
   }
 
 

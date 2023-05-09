@@ -1,4 +1,11 @@
-import { LOGIN_ACTION, LOGIN_GG_ACTION, ADD_TO_MYBOOK_ACTION, REMOVE_FROM_MYBOOK_ACTION } from "./types";
+import {
+    LOGIN_ACTION,
+    LOGIN_GG_ACTION,
+    ADD_TO_MYBOOK_ACTION,
+    REMOVE_FROM_MYBOOK_ACTION,
+    CURRENT_API_URL
+    }
+    from "./types";
 
 
 export const LoginAction = (payload) => {
@@ -28,3 +35,10 @@ export const RemoveFromMyBookAction = (payload) => {
         payload: payload
     }
 }
+
+export const setCurrentApiUrl = (payload) => {
+  return {
+    type: CURRENT_API_URL,
+    payload: payload,
+  };
+};

@@ -1,22 +1,14 @@
-import './asset/css/App.scss';
-import Header from './components/layout/Header/Header.js'
-import { Outlet } from 'react-router-dom'
+import "./App.scss";
+import { Outlet } from "react-router-dom";
+import MainLayout from "./components/layout/main-layout/MainLayout";
 
 function App() {
   return (
-    <div className="app-container">
-      <div className='header-container'>
-        <Header />
-      </div>
-      <div className='main-container'>
-        <div className='sidenav-container'>
-          
-        </div>
-      </div>
-      <div className='app-container'>
+    <>
+      <MainLayout>
         <Outlet />
-      </div>
-    </div>
+      </MainLayout>
+    </>
   );
 }
 

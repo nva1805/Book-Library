@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 import { LoginAction, LoginActionGG } from '../../../redux/action/Action';
 import { useDispatch } from 'react-redux';
 import { FcGoogle } from 'react-icons/fc';
-import '../../../asset/css/components/auth/login.scss'
+import './login.scss'
 import NProgress from 'nprogress'
 NProgress.configure({ showSpinner: false });
 

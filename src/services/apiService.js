@@ -1,4 +1,4 @@
-import axios from "../utils/axiosCustomize";
+import AxiosInstance from "../utils/axiosInstance";
 
 export const postCreateNewUser = (email, password, userName, role, imgUrl) => {
   let data = {
@@ -8,11 +8,11 @@ export const postCreateNewUser = (email, password, userName, role, imgUrl) => {
     role: role,
     userImageURL: `${imgUrl}`,
   };
-  return axios.post("Participants/users.json", data);
+  return AxiosInstance.post("Participants/users.json", data);
 };
 
 export const getAllUser = () => {
-  return axios.get("Participants/users.json");
+  return AxiosInstance.get("Participants/users.json");
 };
 
 export const patchUpdateUser = (userName, role, imgUrl, userID) => {
@@ -21,17 +21,17 @@ export const patchUpdateUser = (userName, role, imgUrl, userID) => {
     role: role,
     userImageURL: `${imgUrl}`,
   };
-  return axios.patch(`Participants/users/${userID}.json`, data);
+  return AxiosInstance.patch(`Participants/users/${userID}.json`, data);
 };
 
 export const deleteUser = (userID) => {
-  return axios.delete(`Participants/users/${userID}.json`);
+  return AxiosInstance.delete(`Participants/users/${userID}.json`);
 };
 
 // product
 
-export const getNovel = () => {
-  return axios.get("Book/Novel.json");
+export const getBooks = (apiUrl) => {
+  return AxiosInstance.get(apiUrl);
 };
 
 export const postNovel = (title, productImageURL) => {
@@ -39,5 +39,5 @@ export const postNovel = (title, productImageURL) => {
     title: title,
     userImageURL: `${productImageURL}`,
   };
-  return axios.post("Book/Novel.json", data);
+  return AxiosInstance.post("Book/Novel.json", data);
 };

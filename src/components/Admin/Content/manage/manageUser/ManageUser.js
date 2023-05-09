@@ -1,7 +1,7 @@
 import React from 'react';
 import ModalCreateUser from './ModalCreateUser';
 import TableUser from './TableUser';
-import '../../../../../asset/css/components/admin/content/ManageUser.scss'
+import './ManageUser.scss'
 import { useState, useEffect } from 'react'
 import { getAllUser } from '../../../../../services/apiService'
 

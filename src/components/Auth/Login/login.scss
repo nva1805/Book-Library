@@ -1,0 +1,32 @@
+.login__parent {
+    background-image: url('../../../asset/picture/login/books2_cm-.jpg');
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background-size: 100% 100%;
+
+    // background-repeat: no-repeat;
+    .card {
+        .login__email {
+            &:disabled {
+                cursor: not-allowed;
+                pointer-events: all !important;
+            }
+        }
+
+        .login__google {
+            align-items: center;
+            gap: 1rem;
+            background-color: #fff;
+            color: #000;
+            padding: 0 1rem 0.15rem;
+            border-radius: 2rem;
+            cursor: pointer;
+
+            &:hover {
+                background-color: red;
+                color: #fff;
+            }
+        }
+    }
+}
